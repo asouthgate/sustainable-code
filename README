@@ -1,0 +1,23 @@
+This repository houses intentionally broken or flawed code used as a practical exercise for learning.
+
+Addressing the problems in this repository serves as introduction to:
+
+    - unit testing
+    - continuous integration
+    - encapsulation
+    - code review
+    - version control
+
+The following are general problems that can be found in the repository:
+    
+    - low test coverage
+    - tests that do not test
+    - poor encapsulation
+    - code duplication 
+    - oversized functions
+
+In addition, there are a number of bugs that are most easily fixed with proper unit test design.
+
+See HINTS for pointers.
+
+This code is released under the GNU General Public License v3.0 or later, see COPYING.
