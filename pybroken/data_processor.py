@@ -10,21 +10,21 @@
 
 Particularly, there is no encapsulation, which prevents this code from
 being tested, introduces bugs frequently, and in general means this code could never be
-relied on. It is also so unclear in purpose that even the developer would not have much 
-success revisiting it after a short time period.
+relied on. It is also unclear in purpose, even the developer may not have much 
+success revisiting it after a time period.
 
 Code can easily get out of hand, so we should think about design principles ahead 
 of time. What could we have done in advance in order to prevent this from happening?
-Think about the relationship between encapsulation, repetition, clarity, testability. 
+Think about the relationship between encapsulation, repetition, and testability. 
 Code that turns into this is not maintainable long term and most likely will be
 abandoned and/or rewritten.
 
-As it stands, the code is not even fixable long term. Here's a few steps the coder could
-perform:
+To create code that can last, we will start with encapsulation. 
 
 0. Have empathy for the coder that wrote this, who probably was under immense pressure.
-1. Consider the broad tasks that this code performs. How can it be divided into sections?
+1. Consider the broad tasks that this code performs. Could it be divided into sections?
 2. Take the sections, and wrap each one in a function with defined inputs and outputs.
+    # TODO: ref refers to this as ExtractFunction
 3. Consider the specification of your functions. Write a few docstrings to precisely
    define the behaviour of those functions.
 4. Where has the author used bad practice? Consider naming conventions, pruning
@@ -39,8 +39,6 @@ import sys
 
 
 args = sys.argv[2:]
-edit_distance = -99
-threads = []
 # 1. FIRST LOAD THE DATA
 try:
     if args[2] == "old":
@@ -94,7 +92,7 @@ try:
 except:
     print("error")
 else:
-    # 2. CALCULATE THE EDIT DISTANCE FOR INPUTS WITH MULTIPLE THREADS
+    # 2. CALCULATE THE EDIT DISTANCE FOR INPUTS 
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', '--nthreads')
@@ -115,7 +113,7 @@ else:
         from threading import Thread
         import concurrent.futures
         primers = data2
-        def primeredit(primer):
+        for primer in primers:
             primer0 = "ACCCGTAGCCACACAGATACAGAT"
             import numpy
             A = numpy.zeros(len(primer0), len(primer))
@@ -124,17 +122,5 @@ else:
             for i in range(len(primer0)):
                 for j in range(len(primer)):
                     A[i, j] = min([A[i-1, j] + 1, A[i, j-1] + 1, A[i-1,j-1] + (not primer[j] == primer0[i])])
-            return A[-1, -1]
-
-#            for j in range(max(args.n), 4):
-#                threads.append(Thread(target=primeredit, args=( words[j],)))
-       
-        with concurrent.futures.ThreadPoolExecutor(max_workers=args.nthreads) as executor:
-            futures = [executor.submit(primeredit, word) for word in primers]
-            for future in concurrent.futures.as_completed(futures):
-                try:
-                    data = future.result()
-                    print("THE RESULT IS:", data)
-                except:
-                    raise RuntimeError("error2")
-
+            result = A[-1, j-1]
+            print(result)
