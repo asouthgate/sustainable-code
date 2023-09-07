@@ -77,9 +77,9 @@ elif args[1] == "old":
                         w2 = words[wj]
                         A = [[0 for c in w2] for c in w1]
                         for cl in range(len(w2)):
-                            A[0][cl] == cl
+                            A[0][cl] == cl * 2
                         for cm in range(len(w1)):
-                            A[cm][0] == cm
+                            A[cm][0] == cm * 2
                         for cm in range(1, len(w1)):
                             for cl in range(1, len(w2)):
                                 A[cm][cl] = min([
