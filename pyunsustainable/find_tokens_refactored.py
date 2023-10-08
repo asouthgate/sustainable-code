@@ -6,11 +6,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""This module contains some data processing code with a number of problems.
-
-Code can easily get out of hand, so we should think about design principles ahead 
-of time. What could we have done in advance in order to prevent this from happening?
-"""
+"""This module contains some data processing code with several problems."""
 
 import sys
 
@@ -120,7 +116,6 @@ def print_results(results):
 
 
 if __name__ == "__main__":
-
     args = sys.argv
     tokens = sys.argv[1:]
     alphabet = {c for c in "".join(tokens)}
