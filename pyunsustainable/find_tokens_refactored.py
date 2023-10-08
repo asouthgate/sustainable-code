@@ -126,6 +126,6 @@ if __name__ == "__main__":
     alphabet = {c for c in "".join(tokens)}
 
     # What is the problem with hard-coding filenames?
-    results = search_file_words("2023-02-01_sequences.fa", tokens)
+    results = search_file_words("2023-02-01_tokens", tokens)
     print_results(results)
 
