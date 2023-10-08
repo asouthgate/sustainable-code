@@ -1,31 +1,12 @@
-This repository houses intentionally broken or flawed code used as a practical exercise for learning software design in research.
+This repository houses intentionally broken or flawed code used as a practical exercise.
 
-Addressing the problems in this repository serves as introduction to:
+The script pyunsustainable/find_tokens.py should search a file for strings that approximately match a query token.
+Unfortunately, the application does not work as intended.
 
-    - unit testing
-    - continuous integration
-    - encapsulation
-    - code review
-    - version control
+#Usage
 
-The following are general problems that can be found in the repository:
-    
-    - low test coverage
-    - tests that do not test
-    - poor encapsulation
-    - code duplication 
-    - oversized functions
+To attempt to run the code, use:
 
-Three files are included under the pybroken/ in increasing order of difficulty. Choose one that will provide a challenge.
-
-    1. jacobi.py
-    2. phylogeny.py
-    3. concurrency.py
-
-The code in each of these files has bugs that result in incorrect outputs. Sometimes when contributing to
-a codebase, you will not understand it all. The goal is to encapsulate and test code well enough so that you
-can break the relevant parts down into understandable chunks.
-
-See HINTS if required.
-
-This code is released under the GNU General Public License v3.0 or later, see COPYING.
+```
+python3 pyunsustainable/find_tokens.py 2023-02-01_tokens token
+```

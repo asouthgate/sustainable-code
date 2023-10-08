@@ -6,7 +6,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""This module contains some data processing code with a number of problems.
+"""This module contains some data processing code with several problems.
 
 Code can easily get out of hand, so we should think about design principles ahead 
 of time. What could we have done in advance in order to prevent this from happening?
@@ -22,12 +22,13 @@ if __name__ == "__main__":
     found = []
     alphabet = {c for c in "".join(tokens)}
         
-    if args[1] == "new":
+    if args[1] == "2023-02-01_tokens":
         try:
             # READ THE WORDS
-            with open("2023-02-01_sequences.fa") as input_file:
+            with open("2023-02-01_tokens") as input_file:
                 for li, line in enumerate(input_file):
                     words = line.rstrip().split(" ")
+
                     # FILTER OUT WORDS IF JACCARD TOO LOW
                     filtered = []
                     for word in words:
@@ -35,6 +36,7 @@ if __name__ == "__main__":
                         J = len(walpha & alphabet) / len(walpha | alphabet)
                         if J >= 0.3:
                             filtered.append(word)
+
                     # GET PAIRWISE DISTANCES
                     for wi in range(len(tokens)-1):
                         for wj in range(wi, len(filtered)):
@@ -53,7 +55,8 @@ if __name__ == "__main__":
                                         A[cm][cl-1] + 1,
                                         A[cm-1][cl-1] + (not w1[cm] == w1[cl])
                                     ])
-                            if A[-1][-1] < 3:
+
+                            if A[-1][-1] < 2:
                                 print(f"\033[92m Match \033[0mto token `{tokens[wi]}` found at line {li}: `{filtered[wi]}`")
                                 found.add(tokens[wi])
         except:
@@ -63,10 +66,10 @@ if __name__ == "__main__":
             if token not in found:
                 print(f"\033[91m Failed \033[0mto find token `{token}`")
 
-    elif args[1] == "old":
+    elif args[1] == "2023-01-01_tokens":
         try:
             # READ THE WORDS
-            with open("2023-01-01_sequences.fa") as input_file:
+            with open("2023-01-01_tokens") as input_file:
                 for li, line in enumerate(input_file):
                     words = line.rstrip().split(" ")
 

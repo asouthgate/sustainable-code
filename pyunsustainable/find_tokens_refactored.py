@@ -128,5 +128,4 @@ if __name__ == "__main__":
     # What is the problem with hard-coding filenames?
     results = search_file_words("2023-02-01_sequences.fa", tokens)
     print_results(results)
-    results = search_file_words("2023-01-01_sequences.fa", tokens)
 
