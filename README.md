@@ -10,3 +10,9 @@ To attempt to run the code, use:
 ```
 python3 pyunsustainable/find_tokens.py 2023-02-01_tokens token
 ```
+
+To attempt to run the tests, use:
+
+```
+pytest -s test/test_find_tokens.py
+```
