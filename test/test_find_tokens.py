@@ -1,19 +1,14 @@
-import pyunsustainable.find_tokens_refactored as ft
+from pyunsustainable import find_tokens
 
 
-# We could use pytest.parameterize(...
-def test_alignment_distance():
-    # The edit distance between 2 strings that are the same should be 0
-    assert ft.alignment_distance("oranges", "oranges") == 0
-    assert ft.alignment_distance("sand", "land") == 1
-    assert ft.alignment_distance("and", "land") == 1
-    assert ft.alignment_distance("lan", "land") == 1
-    assert ft.alignment_distance("", "land") == 4
-
-    # How else could we test this?
-    # ...
+def test_filter_words_empty_intersection():
+    """Test that words with no characters from the alphabet are filtered out."""
+    alphabet = set("abc")
+    words = ["hello", "world"]
+    filtered_words = find_tokens.filter_words(words, alphabet, 0.0)
+    raise NotImplementedError
 
 
-def test_something_fails():
+def test_always_fail():
     """This test will fail and prevent the pre-commit hook from returning 0"""
     assert False

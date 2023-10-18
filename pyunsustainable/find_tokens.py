@@ -15,6 +15,23 @@ of time. What could we have done in advance in order to prevent this from happen
 import sys
 
 
+def filter_words(words, alphabet, threshold):
+    """A docstring goes here that clearly dscribes the inputs & outputs.
+
+    A further description could go here if required. You could include:
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
+    Including something meaningful & consistent is more important than 
+    choice of format.
+    """
+    raise NotImplementedError
+
+
 if __name__ == "__main__":
 
     args = sys.argv
@@ -34,7 +51,7 @@ if __name__ == "__main__":
                     for word in words:
                         walpha = set(word)
                         J = len(walpha & alphabet) / len(walpha | alphabet)
-                        if J >= 0.3:
+                        if J > 0.3:
                             filtered.append(word)
 
                     # GET PAIRWISE DISTANCES
@@ -78,7 +95,7 @@ if __name__ == "__main__":
                     for word in words:
                         walpha = set(word)
                         J = len(walpha & alphabet) / len(walpha | alphabet)
-                        if J >= 0.4:
+                        if J > 0.4:
                             filtered.append(word)
                             
                     # GET PAIRWISE DISTANCES
