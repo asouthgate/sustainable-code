@@ -32,6 +32,41 @@ def filter_words(words, alphabet, threshold):
     raise NotImplementedError
 
 
+def alignment_distance(s1, s2, indel_cost=1):
+    """Given two strings, compute the alignment distance.
+
+    For an indel cost of 1, the alignment distance is the
+    edit distance. For indel costs other than 1, the distance
+    is not a metric.
+    
+    Parameters
+    ----------
+    s1: `string` or string-like iterable
+    s2: `string` or string-like iterable
+    
+    Returns
+    -------
+    distance: `float`
+    """
+    A = [[0 for c in s2] for c in s1]
+
+    # initialize the first row and column
+    for cl in range(len(s2)):
+        A[0][cl] = cl * indel_cost
+    for cm in range(len(s1)):
+        A[cm][0] = cm * indel_cost
+
+    for cm in range(1, len(s1)):
+        for cl in range(1, len(s2)):
+            A[cm][cl] = min([
+                A[cm-1][cl] + indel_cost,
+                A[cm][cl-1] + indel_cost,
+                A[cm-1][cl-1] + (not s1[cm-1] == s2[cl-1])
+            ])
+    distance = A[-1][-1]
+    return distance
+
+
 if __name__ == "__main__":
 
     args = sys.argv
