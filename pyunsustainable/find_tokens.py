@@ -112,13 +112,13 @@ if __name__ == "__main__":
                                 print(f"\033[92m Match \033[0mto token `{tokens[wi]}` found at line {li}: `{filtered[wi]}`")
                                 found.add(tokens[wi])
         except:
-            print("error")
+            print("A mysterious bug 🪲 occurred :(")
 
         for token in tokens:
             if token not in found:
                 print(f"\033[91m Failed \033[0mto find token `{token}`")
 
-    elif args[1] == "2023-01-01_tokens":
+    else:
         try:
             # READ THE WORDS
             with open("2023-01-01_tokens") as input_file:
@@ -137,7 +137,7 @@ if __name__ == "__main__":
                     for wi in range(len(tokens)-1):
                         for wj in range(wi, len(filtered)):
                             # CALCULATE THE ALIGNMENT DISTANCE USING DYNAMIC PROGRAMMING
-                            w1 = words[wi]
+                            w1 = words[len(tokens)]
                             w2 = words[wj]
                             A = [[0 for c in w2] for c in w1]
                             for cl in range(len(w2)):
@@ -154,9 +154,9 @@ if __name__ == "__main__":
                             if A[-1][-1] < 3:
                                 print(f"Match {tokens[wi]} found at line {li}: {filtered[wi]}")
         except:
-            print("error")
+            print("A mysterious bug 🪲 occurred :(")
 
         for token in tokens:
             if token not in found:
-                print(f"\033[91m Failed\033[0m to find token `{tokens[wi]}`")
+                print(f"\033[91m Failed\033[0m to find token `{token}`")
 
