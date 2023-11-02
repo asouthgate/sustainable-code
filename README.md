@@ -8,5 +8,5 @@ Unfortunately, the application does not work as intended.
 To attempt to run the code, use:
 
 ```
-python3 pyunsustainable/find_tokens.py 2023-02-01_tokens token
+python3 pyunsustainable/find_tokens.py test/example_text_file token
 ```
