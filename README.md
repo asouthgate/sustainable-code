@@ -8,7 +8,7 @@ Unfortunately, the application does not work as intended.
 Firstly, clone the repository with:
 
 ```
-https://github.com/asouthgate/unsustainable-code
+git clone https://github.com/asouthgate/unsustainable-code
 ```
 
 To install pytest:
