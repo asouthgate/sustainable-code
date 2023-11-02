@@ -33,8 +33,6 @@ To attempt to run the tests:
 pytest test/test_find_tokens.py
 ```
 
-What happens?
-
 ### Making changes
 
 To make a change, open a project file such as `test_find_tokens.py` and make a change. Then:
@@ -49,4 +47,3 @@ Commit the change with:
 git commit -m 'a meaningful message goes here'
 ```
 
-What happens?
